@@ -14,17 +14,17 @@ namespace kitters.Controllers
     public List<Kitter> Kitters = new List<Kitter>()
     {
       new Kitter("Homegirl", true, 3.5f),
+      new Kitter("Homeboy", false, 3.5f)
 
-
-  }
+    };
 
 
 
     // GET api/values
     [HttpGet]
-    public ActionResult<IEnumerable<string>> Get()
+    public ActionResult<IEnumerable<Kitter>> Get()
     {
-      return new string[] { "value1", "value2" };
+      return Kitters;
     }
 
     // GET api/values/5
