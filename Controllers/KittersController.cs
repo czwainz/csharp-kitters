@@ -15,10 +15,7 @@ namespace kitters.Controllers
     {
       new Kitter("Homegirl", true, 3.5f),
       new Kitter("Homeboy", false, 3.5f)
-
     };
-
-
 
     // GET api/values
     [HttpGet]
@@ -29,27 +26,59 @@ namespace kitters.Controllers
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public ActionResult<string> Get(int id)
+    public ActionResult<Kitter> Get(int id)
     {
-      return "value";
+      try
+      {
+        return Kitters[id];
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(ex);
+        return NotFound("{\"error\": \"No such kitter!\"}");
+      }
     }
 
-    // POST api/values
+    // POST api/values/5
     [HttpPost]
-    public void Post([FromBody] string value)
+    public ActionResult<List<Kitter>> Post(int id, [FromBody] Kitter kitter)
     {
+      Kitters.Add(kitter);
+      return Kitters;
     }
 
     // PUT api/values/5
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
+    public ActionResult<List<Kitter>> Put(int id, [FromBody] Kitter kitter)
     {
+      try
+      {
+        Kitters[id] = kitter;
+        return Kitters;
+
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(ex);
+        return NotFound("{\"error\": \"No such kitter!\"}");
+      }
     }
+
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public ActionResult<List<Kitter>> Delete(int id)
     {
+      try
+      {
+        Kitters.Remove(Kitters[id]);
+        return Kitters;
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(ex);
+        return NotFound("{\"error\": \"No such kitter!\"}");
+      }
     }
   }
 }
