@@ -11,7 +11,14 @@ namespace kitters.Controllers
   [ApiController]
   public class KittersController : ControllerBase
   {
-    public List<Kitter> Kitters = new List<Kitter>();
+    public List<Kitter> Kitters = new List<Kitter>()
+    {
+      new Kitter("Homegirl", true, 3.5f),
+
+
+  }
+
+
 
     // GET api/values
     [HttpGet]

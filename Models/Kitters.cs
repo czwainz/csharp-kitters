@@ -10,9 +10,9 @@ namespace kitters.Models
     [Required]
     public bool IsFemale { get; set; }
 
-    public int Age { get; set; }
+    public float Age { get; set; }
 
-    public Kitter(string name, bool isFemale, int age)
+    public Kitter(string name, bool isFemale, float age)
     {
       Name = name;
       IsFemale = isFemale;
