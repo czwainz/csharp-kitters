@@ -14,7 +14,8 @@ namespace kitters.Controllers
     public List<Kitter> Kitters = new List<Kitter>()
     {
       new Kitter("Homegirl", true, 3.5f),
-      new Kitter("Homeboy", false, 3.5f)
+      new Kitter("Homeboy", false, 3.5f),
+      new Kitter("Bill", false, 10f)
     };
 
     // GET api/values
@@ -35,7 +36,7 @@ namespace kitters.Controllers
       catch (Exception ex)
       {
         Console.WriteLine(ex);
-        return NotFound("{\"error\": \"No such kitter!\"}");
+        return NotFound("{\"error\": \"No such kitter exists!\"}");
       }
     }
 
